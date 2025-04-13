@@ -51,6 +51,7 @@ $ git commit -m "Implement getCompletedTasks method"
 17. Синхронизирајте ја локалната гранката со гранката на оддалечениот
 репозиториум
 
+$ git pull origin master
 $ git push origin 2-find-all-completed-tasks
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
@@ -245,5 +246,55 @@ $ git commit -m "Final commit"
 
 26. Синхронизирајте ја гранката master со оддалечениот репозииториум.
 
+$ git pull origin master 
 $ git push origin master
+
+----------------------------------------------------------------------------------------------------
+Дел 3: Forking git workflow
+
+27. Направете fork од репозиториумот
+https://github.com/stefanandonov/SI_2025_lab1_151020.
+
+Направив fork на соодветниот линк.
+
+28. Fork-ot што се креираше на вашиот github профил, клонирајте го на вашиот
+компјутер.
+
+$ git clone https://github.com/ninasaveva/SI_2025_lab1_151020.git
+Cloning into 'SI_2025_lab1_151020'...
+remote: Enumerating objects: 26, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 26 (delta 1), reused 0 (delta 0), pack-reused 23 (from 1)
+Receiving objects: 100% (26/26), 5.56 KiB | 1.11 MiB/s, done.
+Resolving deltas: 100% (7/7), done.
+
+
+29. Влезете во локалниот репозиториум и додадете датотека INDEX.txt (аде што
+наместо INDEX ќе стои вашиот број на индекс). Во датотеката напишете го
+вашето име. Направете commit со порака Add file.
+
+cd SI_2025_lab1_151020
+$ nano 233186.txt
+Nina
+
+$ git add 233186.txt
+$ git commit -m "Add file"
+
+30. Синхронизирајте ја master гранката на оддалечениот репозиториум.
+
+$ git pull origin master
+$ git push origin master
+
+31. Отворете го fork репозиторумот што е креиран на вашиот github профил, и
+кликнете на Contribute -> Create pull request (како што е прикажано на сликата
+подолу).
+
+Успешно направив pull request како што е барањето.
+
+32. Креирајте pull request во чие име ќе биде напишан само бројот на вашиот
+индекс (ништо друго). Скриптата за автоматско оценување нема да ви го открие
+PR-от доколку во него имате било што друго освен бројот на индексот.
+
+Успешно направив pull request со наслов на мојот индекс како што е барањето.
 
