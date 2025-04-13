@@ -1,0 +1,15 @@
+*   423757f Merge branch 'master' of https://github.com/ninasaveva/SI_2024_lab1_233186
+|\  
+| *   326d250 Merge pull request #11 from ninasaveva/4-sort-tasks-by-priority
+| |\  
+| | * 8f50a0c Implement sortTasksByPriority method
+| * |   9a9bba0 Merge pull request #10 from ninasaveva/2-find-all-completed-tasks
+| |\ \  
+| | |/  
+| |/|   
+| | * ca42232 Implement getCompletedTasks method
+| |/  
+* / 2d2ec8a Implement method countTasksPerCategory
+|/  
+* 9eb054f Add starter code
+* 4c8358e Initial commit

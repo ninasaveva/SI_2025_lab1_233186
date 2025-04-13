@@ -1,0 +1,249 @@
+Дел 2: Софтверски развој со користење на Git систем за контрола на
+верзии
+
+
+13. Во локалниот репозиториум, извршете ја командата git fetch origin за да ви се
+креираат tracker гранки за 3-те гранки кои ги креиравте преку Github проектот.
+
+Јас откако направив гранка за секој од трите issues направив fetch за секоја од нив.
+$ git fetch origin
+From https://github.com/ninasaveva/SI_2025_lab1_233186
+ * [new branch]      2-find-all-completed-tasks -> origin/2-find-all-completed-tasks
+
+
+$ git fetch origin
+From https://github.com/ninasaveva/SI_2025_lab1_233186
+ * [new branch]      4-sort-tasks-by-priority -> origin/4-sort-tasks-by-priority
+
+
+$ git fetch origin
+From https://github.com/ninasaveva/SI_2025_lab1_233186
+ * [new branch]      7-count-tasks-per-category -> origin/7-count-tasks-per-category
+
+
+
+14. Префрлете се на гранката за првиот issue (пр. за такво автоматски
+изгенерирано име на гранка 2-find-all-completed-tasks).
+
+$ git checkout 2-find-all-completed-tasks
+
+15. Имплементирајте ја соодветната функција за тој issue.
+
+Ја отварам датотеката каде ми е сместен кодот и правам промена така што го додавам потребниот код за соодветниот метод.
+Еве го соодветно имплементираниот метод:
+public ArrayList<Task> getCompletedTasks() {
+    ArrayList<Task> completedTasks = new ArrayList<>();
+    for (Task task : tasks) {
+        if (task.isCompleted()) {
+            completedTasks.add(task);
+        }
+    }
+    return completedTasks;
+}
+
+
+16. Направете commit
+
+$ git add SI2025Lab1Main.java
+$ git commit -m "Implement getCompletedTasks method"
+
+
+17. Синхронизирајте ја локалната гранката со гранката на оддалечениот
+репозиториум
+
+$ git push origin 2-find-all-completed-tasks
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 424 bytes | 424.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ninasaveva/SI_2025_lab1_233186.git
+   9eb054f..ca42232  2-find-all-completed-tasks -> 2-find-all-completed-tasks
+
+
+18. Креирајте pull request за спојување на гранката кон master.
+
+Го отвараме  репозиториумот на GitHub и ни се појавува опција:
+Compare & pull request
+Со кликање на тоа копче ни се појавува опцијата:
+Create pull request
+И така е креиран pull request.
+
+
+19. Повторете ги чекорите 14-18 за останатите два issues.
+
+Истото го правиме и за другите два методи:
+
+--------ВТОРА ГРАНКА------------------------------------------------------
+$ git checkout 4-sort-tasks-by-priority
+
+Еве го соодветно имплементираниот метод:
+// 4. Sort tasks by priority
+public void sortTasksByPriority() {
+    tasks.sort(Comparator.comparing(Task::getPriority).reversed());
+}
+
+$ git add SI2025Lab1Main.java
+git commit -m "Implement getCompletedTasks method"
+
+$ git push origin 4-sort-tasks-by-priority
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 403 bytes | 403.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ninasaveva/SI_2025_lab1_233186.git
+   9eb054f..8f50a0c  4-sort-tasks-by-priority -> 4-sort-tasks-by-priority
+
+Креираме pull request.
+
+---------ТРЕТА ГРАНКА------------------------------------------------------
+$ git checkout 7-count-tasks-per-category
+Еве го соодветно имплементираниот метод:
+public Map<String, Integer> countTasksPerCategory() {
+    Map<String, Integer> categoryCount = new HashMap<>();
+    
+    // Пребројување на задачи по категории
+    for (Task task : tasks) {
+        categoryCount.put(task.getCategory(), categoryCount.getOrDefault(task.getCategory(), 0) + 1);
+    }
+    
+    return categoryCount;
+}
+
+$ git add SI2025Lab1Main.java
+
+$ git commit -m "Implement method countTasksPerCategory"
+
+$ git push origin 7-count-tasks-per-category
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 424 bytes | 424.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ninasaveva/SI_2025_lab1_233186.git
+   9eb054f..2d2ec8a  7-count-tasks-per-category -> 7-count-tasks-per-category
+
+Креираме pull request.
+
+20. Два од трите pull requests одобрете ги и споете ги преку клик на копчето Merge
+pull request.
+
+Ги одобрив два од трите pull requests и ги споив со главната гранка со клик на копчето Merge pull request.
+
+21. Отворете на Github проектот и забележете дека соодветните issues поврзани со
+тие две гранки автоматски се префрлени во фазата Done.
+
+Да забележав дека двата issues на кои направив Merge pull request се во фазата Done. 
+
+22. Префрлете се на гранката master и преостаната трета гранка која сѐ уште не е
+споена, спојте ја кон гранката master локално со git команди.
+
+$ git checkout master
+
+$ git merge 7-count-tasks-per-category
+Updating 9eb054f..2d2ec8a
+Fast-forward
+ SI2025Lab1Main.java | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+ 
+
+При спојувањето на третата гранка 7-count-tasks-per-category со master гранката, првично беше користена "Fast-forward" стратегија. Ова се гледа од излезот на командата git merge 7-count-tasks-per-category каде што јасно беше наведено "Fast-forward".
+ Оваа стратегија се користи кога целната гранка нема нови промени, што значи дека едноставно референцата на master се поместува напред до последниот commit од гранката што се спојува.
+
+
+23. Синхронизирајте ја гранката master со оддалечениот репозиториум.
+
+При синхронизацијата на локалните промени со оддалечениот репозиториум со git pull, беше користена рекурзивна стратегија за спојување. Ова се случи затоа што имаше промени и на локалниот и на оддалечениот репозиториум кои требаше да се спојат. Рекурзивната стратегија е стандардна стратегија која ги анализира разликите од заедничкиот предок, ги споредува со обете гранки и интелигентно ги комбинира промените.
+
+$ git push origin master
+To https://github.com/ninasaveva/SI_2025_lab1_233186.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/ninasaveva/SI_2025_lab1_233186.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+$ git pull origin master
+Merge branch 'master' of https://github.com/ninasaveva/SI_2025_lab1_233186
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               ~                                                                               .git/MERGE_MSG [unix] (18:26 13/04/2025)                                 1,1 All
+"~/SI_2025_lab1_233186/.git/MERGE_MSG" [unix] 6L, 301B
+
+
+$ git push origin master
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 474 bytes | 474.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ninasaveva/SI_2025_lab1_233186.git
+   326d250..423757f  master -> master 
+
+Нашиот push е сега успешно завршен и промените се испратени на GitHub.
+Излезот покажува дека:
+Три објекти се компресирани и испратени
+Сите делти се успешно разрешени
+Гранката master на вашиот локален репозиториум е синхронизирана со master гранката на GitHub репозиториумот
+
+Сега гледаме на нашиот GitHub профил дека:
+Pull request-от за гранката која сме ја споиле е затворен
+Соодветниот issue е автоматски преместен во Done колоната.
+
+24. Забележете дека сега и pull request-от за таа гранка е затворен, како и
+соодветниот github project issue е преместен во фазата Done автоматски.
+
+Да тоа е успешно направено, сега сите три issues се во колоната Done.
+
+25. Додадете датотеката logs.txt во која ќе ги ископирате досегашните git логови
+(користете ја командата git log --oneline --graph --all). Додадете ја и датотеката
+INDEX.txt (каде што наместо INDEX ќе стои вашиот број на индекс) во која
+водевте документација додека ја решававте оваа лабораториска вежба.
+Направете последен commit со порака Final commit.
+
+$ touch logs.txt
+$ git log --oneline --graph --all > logs.txt
+
+Излезот од командата:
+$ git log --oneline --graph --all
+*   423757f (HEAD -> master, origin/master, origin/HEAD) Merge branch 'master' of https://github.com/ninasaveva/SI_2024_lab1_233186
+|\
+| *   326d250 Merge pull request #11 from ninasaveva/4-sort-tasks-by-priority
+| |\
+| | * 8f50a0c (origin/4-sort-tasks-by-priority, 4-sort-tasks-by-priority) Implement sortTasksByPriority method
+| * |   9a9bba0 Merge pull request #10 from ninasaveva/2-find-all-completed-tasks
+| |\ \
+| | |/
+| |/|
+| | * ca42232 (origin/2-find-all-completed-tasks, 2-find-all-completed-tasks) Implement getCompletedTasks method
+| |/
+* / 2d2ec8a (origin/7-count-tasks-per-category, 7-count-tasks-per-category) Implement method countTasksPerCategory
+|/
+* 9eb054f Add starter code
+* 4c8358e Initial commit
+
+Потоа правам нова датотека и во неа ќе ги сместам сите чекори за тоа како го изработив овој дел 2.
+$nano 233186.txt
+
+$ git add logs.txt 233186.txt
+$ git commit -m "Final commit"
+
+
+26. Синхронизирајте ја гранката master со оддалечениот репозииториум.
+
+$ git push origin master
+
